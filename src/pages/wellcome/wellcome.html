@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="positive">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>eAlu</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div *ngIf="!carrera" text-center padding-vertical>
+        Selecciona tu carrera
+    </div>
+  <ion-item>
+    <ion-label>Carrera</ion-label>
+    <ion-select [ngModel]="carrera" (ngModelChange)="cambiarCarrera($event)">
+      <ion-option mode='md' *ngFor="let carrera of carreraList" [value]="carrera.codcarsec" text-wrap>{{carrera.codcarsec}} - {{carrera.carrera}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+</ion-content>
+π

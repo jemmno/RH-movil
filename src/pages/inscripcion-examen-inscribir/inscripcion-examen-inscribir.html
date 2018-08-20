@@ -1,0 +1,22 @@
+<ion-content>
+
+    <ion-list *ngIf="(asignaturas)">
+        <ion-item *ngFor="let asignatura of asignaturas">
+            <ion-label text-wrap>
+                <h2>{{asignatura.asignat}}</h2>
+                <p>Tipo: {{asignatura.tipoexam}}, fecha: {{asignatura.fechaexam | date:'dd-MM-yyyy HH:mm'}}</p>
+
+            </ion-label>
+            <ion-checkbox [(ngModel)]="asignatura.inscribir"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+    <div *ngIf="asignaturas && asignaturas.length == 0" text-center>
+        No posee inscripciones disponibles
+    </div>
+</ion-content>
+
+<ion-footer [hidden]="keyboard.isOpen()">
+    <button *ngIf="(asignaturas && asignaturas.length)" ion-button block outline (click)="showConfirm()">
+        Inscribir
+    </button>
+</ion-footer>

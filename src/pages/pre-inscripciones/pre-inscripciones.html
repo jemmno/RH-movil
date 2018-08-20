@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="positive" no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pre-inscripciones registradas</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-item *ngFor="let preinscripcion of preinscripciones">
+    <ion-card>
+      <ion-card-header style="white-space: normal;">
+        <ion-row justify-content-between>
+          <span item-right>{{preinscripcion.asignatura}}</span>
+        </ion-row>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+         
+          Curso
+          <ion-badge item-end>{{ preinscripcion.curso }}</ion-badge>
+        </ion-item>
+        <ion-item>
+         
+          Turno
+          <span item-end>{{ preinscripcion.turno }}</span>
+        </ion-item>
+        <ion-item>
+         
+          Seccion
+          <span item-end>{{ preinscripcion.seccion }}</span>
+        </ion-item>
+        <ion-item>
+         
+          Fecha de inscripcíon
+          <span item-end>{{ preinscripcion.fechains }}</span>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+    <div *ngIf="preinscripciones && preinscripciones.length == 0" text-center>
+      No posee preinscripciones
+    </div>
+</ion-content>

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar color="positive" no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Inscripciones registradas</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-item margin-bottom>
+    <ion-label> Solo inscripciones de este año </ion-label>
+    <ion-toggle [checked]="soloAnhoActual" (ionChange)=filtroAnhoActual()></ion-toggle>
+  </ion-item>
+  <ion-item *ngFor="let inscripcion of inscripciones| filterBy: ['anho']: filtro | orderBy: 'fechains' | reverse">
+    <ion-card>
+      <ion-card-header style="white-space: normal;">
+        <ion-row justify-content-between>
+          <span item-right>{{inscripcion.asignatura}}</span>
+        </ion-row>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+
+          Curso {{inscripcion.anho}}
+          <ion-badge item-end>{{ inscripcion.curso }}</ion-badge>
+        </ion-item>
+        <ion-item>
+
+          Turno
+          <span item-end>{{ inscripcion.turno }}</span>
+        </ion-item>
+        <ion-item>
+
+          Seccion
+          <span item-end>{{ inscripcion.seccion }}</span>
+        </ion-item>
+        <ion-item>
+
+          Fecha de inscripcíon
+          <span item-end>{{ inscripcion.fechains }}</span>
+        </ion-item>
+
+        <ion-item *ngIf="inscripcion.semestre">
+          Semestre
+          <span item-end>{{ inscripcion.semestre }}</span>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+  <div *ngIf="inscripciones && inscripciones.length == 0" text-center>
+      No posee inscripciones
+    </div>
+</ion-content>
