@@ -18,10 +18,13 @@ import { ToastService } from './services/toast.service'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomInterceptor } from './httpInterceptor';
 
+import { AsistenciasPage } from '../pages/asistencias/asistencias';
+
 @NgModule({
   declarations: [
     MyApp,
     WellcomePage,
+    AsistenciasPage
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { CustomInterceptor } from './httpInterceptor';
   entryComponents: [
     MyApp,
     WellcomePage,
+    AsistenciasPage
   ],
   providers: [
     Global,

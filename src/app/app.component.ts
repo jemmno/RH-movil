@@ -7,25 +7,21 @@ import { AlertController } from 'ionic-angular';
 import { AuthService } from '../providers/auth-service/auth-service';
 import { LoginPage } from '../pages/login/login';
 import { StorageProvider } from '../providers/storage/storage';
-import { Observable } from "rxjs";
 import { Events } from 'ionic-angular';
+
+import { AsistenciasPage } from '../pages/asistencias/asistencias';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  seleccionoCarrera: Observable<boolean>;
-  // rootPage: any = TodasLasNotasFinalesPage;
   rootPage: any = 'LoginPage';
 
   activePage: any;
-  pages: Array<{ title: string, component: any, icon: string, subitem: boolean, can: boolean }>;
-  pages_sin_carrera: Array<{ title: string, component: any, icon: string, subitem: boolean, can: boolean }>;
-  public carreraList;
+  pages: Array<{ title: string, component: any, icon: string, subitem: boolean }>;
   user: any;
-  public carrera;
-  facultad: any;
+
   menuInicializado: boolean = false;
   constructor(public platform: Platform, public statusBar: StatusBar,
     public splashScreen: SplashScreen, private auth: AuthService,
@@ -35,6 +31,7 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
+      { title: 'Asistencias', component: AsistenciasPage, icon: 'md-albums', subitem: false },
     ];
     this.activePage = this.pages[2];
 

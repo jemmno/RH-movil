@@ -20,22 +20,8 @@ export class StorageProvider extends StorageService{
 		return this._storage;
   }
 
-
-
-  //  private cacheUser = window.localStorage.getItem("user-data") || "{}";
-  // private cacheCarrera = window.localStorage.getItem("carrera-data") || "{}";
-  // private cacheMatriculas = window.localStorage.getItem("matriculas-data") || "[]";
   
   public user;
-  
-  // public carrera;
-  // public matriculas;
-  
-  // constructor() {
-  //   this.user = JSON.parse(this.cacheUser);
-  //   this.carrera = JSON.parse(this.cacheCarrera); 
-  //   this.matriculas = JSON.parse(this.cacheMatriculas);
-  // }
 
   public saveStateUser(user, credentials){
     user.logged = true;

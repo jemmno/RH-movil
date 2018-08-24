@@ -10,6 +10,12 @@
     <div class="spacer" style="width: 248px; height: 22px;"></div>
     
     <ion-list>
+      <button menuClose ion-item *ngFor="let p of pages | filterBy: ['subitem']: 'false'" (click)="openPage(p)" class="item-icon-left side-menu-item" [class.active-page]="checkActive(p)">
+          <ion-icon name={{p.icon}} item-start></ion-icon>{{p.title}}
+      </button>
+    </ion-list>
+    
+    <ion-list>
         <button menuClose ion-item class="item-icon-left side-menu-item" (click)="showConfirm()">
             <ion-icon name='md-exit' item-start></ion-icon>Cerrar Sesión  
         </button>
