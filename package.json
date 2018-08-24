@@ -1,8 +1,8 @@
 {
-  "name": "eAlu",
+  "name": "RH móvil",
   "version": "0.1.0",
-  "author": "Centro Nacional de Computación",
-  "homepage": "https://www.cnc.una.py/",
+  "author": "José Emmanuel Noguera",
+  "homepage": "http://purecode.co/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

@@ -20,16 +20,6 @@ export class WellcomePage {
 
 
   constructor(private storage: StorageProvider) {
-    this.storage.currentCarrera().subscribe((val) => {
-      this.carrera = JSON.parse(val);
-    })
-    this.storage.currentMatriculas().subscribe((val) => {
-      this.carreraList = JSON.parse(val);
-    });
-  }
 
-  cambiarCarrera(carreraCode) {
-    this.storage.saveStateCarrera(carreraCode);
-  }
-  
+  }  
 }

@@ -9,26 +9,6 @@
     </div>
     <div class="spacer" style="width: 248px; height: 22px;"></div>
     
-    <ion-item class="item-icon-left side-menu-item" >
-      <ion-label>Carrera</ion-label>
-      <ion-select [ngModel]="carrera" (ngModelChange)="cambiarCarrera($event)"> 
-        <ion-option mode= 'md' *ngFor="let carrera of carreraList" [value] = "carrera.codcarsec" text-wrap>{{carrera.codcarsec}} - {{carrera.carrera}}</ion-option>     
-      </ion-select>
-    </ion-item>
-    <ion-list *ngIf="carrera">
-      <button menuClose ion-item *ngFor="let p of pages | filterBy: ['subitem']: 'false' | filterBy: ['can']: 'true'" (click)="openPage(p)" class="item-icon-left side-menu-item" [class.active-page]="checkActive(p)">
-          <ion-icon name={{p.icon}} item-start></ion-icon>{{p.title}}
-      </button>
-      <button menuClose ion-item *ngFor="let p of pages | filterBy: ['subitem']: 'true' " (click)="openPage(p)" class="item-icon-left side-menu-item-anidado" [class.active-page]="checkActive(p)">
-        <ion-icon name={{p.icon}} item-start></ion-icon>{{p.title}}
-    </button>
-    </ion-list>
-    <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages_sin_carrera | filterBy: ['subitem']: 'false'" (click)="openPage(p)" class="item-icon-left side-menu-item" [class.active-page]="checkActive(p)">
-            <ion-icon name={{p.icon}} item-start></ion-icon>{{p.title}}
-        </button>
-        
-      </ion-list>
     <ion-list>
         <button menuClose ion-item class="item-icon-left side-menu-item" (click)="showConfirm()">
             <ion-icon name='md-exit' item-start></ion-icon>Cerrar Sesión  

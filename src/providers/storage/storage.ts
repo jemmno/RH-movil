@@ -44,34 +44,10 @@ export class StorageProvider extends StorageService{
     return this.setItem('user-data', JSON.stringify(user));
   }
 
-  public saveStateFacultad(facultad) {
-    return this.setItem('facultad-data', JSON.stringify(facultad));
-  }
-
-  public saveStateMatriculas(matriculas){
-    return this.setItem('matriculas-data', JSON.stringify(matriculas));
-  }
-
-  public saveStateCarrera(carreraCode){
-    return this.setItem("carrera-data", JSON.stringify(carreraCode));
-  }
-
   public currentUser() {
     return this.getItem("user-data");
   }
   
-  public currentCarrera() {
-    return this.getItem("carrera-data");
-  }
-
-  public currentMatriculas() {
-    return this.getItem("matriculas-data");
-  }
-
-  public currentFacultad() {
-    return this.getItem("facultad-data");
-  }
-
   public clean(){
    this.clear();
   }

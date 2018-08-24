@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import { Session } from '../../app/models/session';
-import { Matricula } from '../../app/models/matricula';
 import { StorageProvider } from '../../providers/storage/storage';
 import { ToastService } from '../../app/services/toast.service';
 
@@ -19,7 +18,6 @@ export class AuthService {
   private logoutUrl = 'logout';
   public url: string;
   public user: any;
-  public carrera;
   
   constructor(
     private http: HttpClient,
@@ -29,9 +27,6 @@ export class AuthService {
     this.storage.currentUser().subscribe((val) => {
       this.user = val;
     })
-    this.storage.currentCarrera().subscribe((val) => {
-      this.carrera = val;
-    })
     this.url = Global.url;
     //this.user = storage.currentUser();
     //this.carrera = storage.currentCarrera();
@@ -39,11 +34,11 @@ export class AuthService {
 
  
   public login(credentials): Observable<Session>  {
-    if (credentials.username === null || credentials.password === null || credentials.facultad === null) {
+    if (credentials.username === null || credentials.password === null) {
       return Observable.throw("Por favor ingrese sus credenciales");
     } else {
       console.log("credenciales", credentials);
-      const url = `${this.url}${this.loginUrl}?codfacul=${credentials.facultad.codigo}`;
+      const url = `${this.url}${this.loginUrl}`;
       let formData: FormData = new FormData(); 
       formData.append('username', credentials.username);
       formData.append('password', credentials.password); 
@@ -52,19 +47,6 @@ export class AuthService {
           catchError(this.handleError<Session>('login'))
       );
     }
-  }
-
-  public getMatriculas() :Observable<Matricula[]> {
-    const url = `${this.url}sesion-ealu/matriculas`;
-    return this.http.get<Matricula[]>(url)
-    .pipe(
-      tap(matriculas => this.saveMatriculas(matriculas)),
-      catchError(this.handleError<Matricula[]>('Obteniendo matriculas'))
-    );
-  }
-
-  private saveMatriculas(matriculas) {
-    this.storage.saveStateMatriculas(matriculas);
   }
 
   public isLogged() : boolean{
@@ -77,14 +59,6 @@ export class AuthService {
     return user$
   }
   
-  public currentCarrera() {
-    let carrera: any;
-    this.storage.currentCarrera().subscribe((val) => {
-      carrera = val;
-    })
-    return carrera;
-  }
-
   public logout(): Observable<any> {
     const ourl = this.url + this.logoutUrl;
     console.log("cerrando sesion", this.user);
