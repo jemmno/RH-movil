@@ -7,6 +7,9 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Asistencias</ion-title>
   </ion-navbar>
 
@@ -14,5 +17,27 @@
 
 
 <ion-content padding>
-
+  <ion-card *ngIf="asistenciasTrabajador">
+    <ion-card-header>
+      <b>Resumen</b>
+    </ion-card-header>
+    <ion-list>
+        <ion-item>
+            <p item-start>Asistencias</p>
+            <p item-end>{{asistenciasTrabajador.cantAsistencias}}</p>
+        </ion-item>
+        <ion-item>
+            <p item-start>Ausencias</p>
+            <p item-end>{{asistenciasTrabajador.cantAusencias}}</p>
+        </ion-item>
+        <ion-item>
+            <p item-start>Omisiones</p>
+            <p item-end>{{asistenciasTrabajador.cantOmisiones}}</p>
+        </ion-item>
+        <ion-item>
+            <p item-start>Retrasos</p>
+            <p item-end>{{asistenciasTrabajador.cantRetrasos}}</p>
+        </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>

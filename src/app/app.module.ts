@@ -19,6 +19,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomInterceptor } from './httpInterceptor';
 
 import { AsistenciasPage } from '../pages/asistencias/asistencias';
+import { AsistenciaService } from '../app/services/asistencia.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { AsistenciasPage } from '../pages/asistencias/asistencias';
     ToastService,
     StatusBar,
     SplashScreen,
-
+    AsistenciaService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StorageProvider,
     { provide: HTTP_INTERCEPTORS,
