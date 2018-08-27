@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { LoadingService } from '../../app/services/loading.service';
 import { AsistenciaService } from '../../app/services/asistencia.service';
-import { AsistenciaTrabajador } from '../../app/models/asistenciaTrabajador';
+import { Asistencia } from '../../app/models/asistencia';
+import { ModalAsistenciaDetailPage } from '../modal-asistencia-detail/modal-asistencia-detail';
 
 /**
  * Generated class for the AsistenciasPage page.
@@ -17,13 +18,15 @@ import { AsistenciaTrabajador } from '../../app/models/asistenciaTrabajador';
   templateUrl: 'asistencias.html',
 })
 export class AsistenciasPage {
-  asistenciasTrabajador: AsistenciaTrabajador;
+  asistencias: Asistencia;
   rangoDeFechas = { desde: '15/07/2018', hasta: '16/08/2018' };
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private loader: LoadingService,
-    private asistenciaService: AsistenciaService
+    private asistenciaService: AsistenciaService,
+    public modalCtrl: ModalController,
+
   ) {
 
   }
@@ -37,7 +40,7 @@ export class AsistenciasPage {
     this.asistenciaService.getAsistencias(this.rangoDeFechas)
       .subscribe(
         res => {
-          this.asistenciasTrabajador = res,
+          this.asistencias = res,
           this.loader.hideLoader();
         },
         error => {
@@ -45,6 +48,12 @@ export class AsistenciasPage {
           this.loader.hideLoader()
         }
       );
+  }
+
+  openModal(marcacion){
+    console.log(marcacion);
+    let modal = this.modalCtrl.create(ModalAsistenciaDetailPage, { marcacion: marcacion });
+    modal.present();
   }
 
 }

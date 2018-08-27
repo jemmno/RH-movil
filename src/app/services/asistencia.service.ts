@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import { ToastService } from './toast.service';
 import { StorageProvider } from '../../providers/storage/storage'
 import { Global } from '../global';
-import { AsistenciaTrabajador } from '../models/asistenciaTrabajador';
+import { Asistencia } from '../models/asistencia';
 
 @Injectable()
 export class AsistenciaService{
@@ -23,13 +23,13 @@ export class AsistenciaService{
      }
  
     
-    getAsistencias(rangoDeFechas): Observable<AsistenciaTrabajador>{
+    getAsistencias(rangoDeFechas): Observable<Asistencia>{
         if (rangoDeFechas.desde === null || rangoDeFechas.hasta === null) {
             return Observable.throw("Por favor ingrese sus credenciales");
         } else {
-            return this.http.get<AsistenciaTrabajador>(`${this.url}${this.asistenciasUrl}?fechaDesde=${rangoDeFechas.desde}&fechaHasta=${rangoDeFechas.hasta}`)
+            return this.http.get<Asistencia>(`${this.url}${this.asistenciasUrl}?fechaDesde=${rangoDeFechas.desde}&fechaHasta=${rangoDeFechas.hasta}`)
             .pipe(
-                catchError(this.handleError<AsistenciaTrabajador>('getParciales')) 
+                catchError(this.handleError<Asistencia>('getAsitencias')) 
             );
         }
     } 

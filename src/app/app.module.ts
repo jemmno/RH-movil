@@ -19,13 +19,15 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomInterceptor } from './httpInterceptor';
 
 import { AsistenciasPage } from '../pages/asistencias/asistencias';
+import { ModalAsistenciaDetailPage } from '../pages/modal-asistencia-detail/modal-asistencia-detail';
 import { AsistenciaService } from '../app/services/asistencia.service';
 
 @NgModule({
   declarations: [
     MyApp,
     WellcomePage,
-    AsistenciasPage
+    AsistenciasPage,
+    ModalAsistenciaDetailPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { AsistenciaService } from '../app/services/asistencia.service';
   entryComponents: [
     MyApp,
     WellcomePage,
-    AsistenciasPage
+    AsistenciasPage,
+    ModalAsistenciaDetailPage
   ],
   providers: [
     Global,

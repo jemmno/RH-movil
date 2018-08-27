@@ -17,27 +17,44 @@
 
 
 <ion-content padding>
-  <ion-card *ngIf="asistenciasTrabajador">
+  <ion-card *ngIf="asistencias">
     <ion-card-header>
       <b>Resumen</b>
     </ion-card-header>
     <ion-list>
-        <ion-item>
-            <p item-start>Asistencias</p>
-            <p item-end>{{asistenciasTrabajador.cantAsistencias}}</p>
-        </ion-item>
-        <ion-item>
-            <p item-start>Ausencias</p>
-            <p item-end>{{asistenciasTrabajador.cantAusencias}}</p>
-        </ion-item>
-        <ion-item>
-            <p item-start>Omisiones</p>
-            <p item-end>{{asistenciasTrabajador.cantOmisiones}}</p>
-        </ion-item>
-        <ion-item>
-            <p item-start>Retrasos</p>
-            <p item-end>{{asistenciasTrabajador.cantRetrasos}}</p>
-        </ion-item>
+      <ion-item>
+        <p item-start>Asistencias</p>
+        <p item-end>{{asistencias.cantAsistencias}}</p>
+      </ion-item>
+      <ion-item>
+        <p item-start>Ausencias</p>
+        <p item-end>{{asistencias.cantAusencias}}</p>
+      </ion-item>
+      <ion-item>
+        <p item-start>Omisiones</p>
+        <p item-end>{{asistencias.cantOmisiones}}</p>
+      </ion-item>
+      <ion-item>
+        <p item-start>Retrasos</p>
+        <p item-end>{{asistencias.cantRetrasos}}</p>
+      </ion-item>
     </ion-list>
   </ion-card>
+
+  <ion-list *ngIf="asistencias">
+    <ion-list-header>
+      Marcaciones del periodo
+    </ion-list-header>
+
+    <a ion-item *ngFor="let marcacion of asistencias.asisTrabajadorList" (click)="openModal(marcacion)">
+      <h3>{{marcacion.diaSemanaStr}} {{marcacion.fecha}}</h3>
+      <p *ngIf="!marcacion.feriado && !marcacion.ausente">Entrada {{marcacion.horaEntrada}}, Salida {{marcacion.horaSalida}}</p>
+      <ion-badge color="red" *ngIf="marcacion.ausente">Ausente</ion-badge>
+      <ion-badge color="red" *ngIf="marcacion.omision">Omision</ion-badge>
+      <ion-badge color="red" *ngIf="marcacion.retraso">Retraso</ion-badge>
+      <ion-badge color="red" *ngIf="marcacion.salanticipada">Salida anticipada</ion-badge>
+      <ion-badge color="red" *ngIf="marcacion.feriado">Feriado</ion-badge>
+    </a>
+  </ion-list>
+
 </ion-content>

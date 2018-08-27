@@ -8,7 +8,7 @@ export interface Asistencia {
     cantHorasTrabajadas: number;
     cantHsNocturnas: number
     cantHsTrabAjus: number;
-    asistenciasTrabajador: AsistenciaTrabajador[];
+    asisTrabajadorList: AsistenciaTrabajador[];
     observacion: string;
     date: Date;
     marcSinProcesar: Date[];
