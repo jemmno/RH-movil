@@ -1,5 +1,6 @@
 <ion-menu [content]="content" [swipeEnabled]="false">
-  <ion-content class="side-menu-gradient">
+  <ion-content >
+    <div class="side-menu-gradient">
     <div class="spacer" style="width: 248px; height: 22px;"></div>
     <div class="profile-image">
       <img src="assets/imgs/blank-profile-picture.png" style="display: block; width: 40%; height: auto; margin-left: auto; margin-right: auto;">
@@ -8,7 +9,7 @@
       <h3 id="menu-heading1" style="color: rgb(255, 255, 255); font-weight: 300; text-align: center;">{{ user.nameAndSurname }}</h3>
     </div>
     <div class="spacer" style="width: 248px; height: 22px;"></div>
-    
+  </div>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages | filterBy: ['subitem']: 'false'" (click)="openPage(p)" class="item-icon-left side-menu-item" [class.active-page]="checkActive(p)">
           <ion-icon name={{p.icon}} item-start></ion-icon>{{p.title}}
