@@ -28,10 +28,10 @@
         <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="filtro.hasta"></ion-datetime>
       </ion-item>
       <ion-item>
-          <button ion-button block round (click)="filtrar()">Filtrar</button>
+        <button ion-button block round (click)="filtrar()">Filtrar</button>
       </ion-item>
     </ion-list>
-    
+
   </ion-card>
 
   <ion-card *ngIf="asistencias" padding>
@@ -56,13 +56,23 @@
         <p item-end>{{asistencias.cantRetrasos}}</p>
       </ion-item>
       <ion-item>
-          <p item-start>Horas Trabajadas</p>
-          <p item-end>{{asistencias.cantHorasTrabajadas}}</p>
-        </ion-item>
+        <p item-start>Horas Trabajadas</p>
+        <p item-end>{{asistencias.cantHorasTrabajadas}}</p>
+      </ion-item>
     </ion-list>
   </ion-card>
 
-  <ion-list *ngIf="asistencias">
+
+  <ion-list *ngIf="asistencias && asistencias.marcSinProcesar.length">
+    <ion-list-header text-wrap>
+      Marcaciones sin procesar
+    </ion-list-header>
+    <ion-item *ngFor="let marcacion of asistencias.marcSinProcesar">
+      <h3>{{marcacion}}</h3>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="asistencias && asistencias.asisTrabajadorList.length">
     <ion-list-header text-wrap>
       Marcaciones del periodo {{rangoDeFechas.desde}} a {{rangoDeFechas.hasta}}
     </ion-list-header>
