@@ -21,6 +21,8 @@ import { CustomInterceptor } from './httpInterceptor';
 import { AsistenciasPage } from '../pages/asistencias/asistencias';
 import { ModalAsistenciaDetailPage } from '../pages/modal-asistencia-detail/modal-asistencia-detail';
 import { AsistenciaService } from '../app/services/asistencia.service';
+import { PerfilPage } from '../pages/perfil/perfil';
+import { PerfilService } from '../app/services/perfil.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { AsistenciaService } from '../app/services/asistencia.service';
     WellcomePage,
     AsistenciasPage,
     ModalAsistenciaDetailPage,
+    PerfilPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { AsistenciaService } from '../app/services/asistencia.service';
     MyApp,
     WellcomePage,
     AsistenciasPage,
-    ModalAsistenciaDetailPage
+    ModalAsistenciaDetailPage,
+    PerfilPage
   ],
   providers: [
     Global,
@@ -51,6 +55,7 @@ import { AsistenciaService } from '../app/services/asistencia.service';
     StatusBar,
     SplashScreen,
     AsistenciaService,
+    PerfilService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StorageProvider,
     { provide: HTTP_INTERCEPTORS,
