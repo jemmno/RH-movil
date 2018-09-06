@@ -27,7 +27,7 @@ import { AsistenciaService } from '../app/services/asistencia.service';
     MyApp,
     WellcomePage,
     AsistenciasPage,
-    ModalAsistenciaDetailPage
+    ModalAsistenciaDetailPage,
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { LoadingService } from '../../app/services/loading.service';
 import { AsistenciaService } from '../../app/services/asistencia.service';
 import { Asistencia } from '../../app/models/asistencia';
 import { ModalAsistenciaDetailPage } from '../modal-asistencia-detail/modal-asistencia-detail';
+import * as moment from 'moment';
 
 /**
  * Generated class for the AsistenciasPage page.
@@ -18,8 +19,11 @@ import { ModalAsistenciaDetailPage } from '../modal-asistencia-detail/modal-asis
   templateUrl: 'asistencias.html',
 })
 export class AsistenciasPage {
+  filtro = { desde: '', hasta: ''};
+  
   asistencias: Asistencia;
-  rangoDeFechas = { desde: '15/07/2018', hasta: '16/08/2018' };
+  //rangoDeFechas = { desde: '15/07/2018', hasta: '16/08/2018' };
+  rangoDeFechas = { desde: '', hasta: '' };
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,11 +32,15 @@ export class AsistenciasPage {
     public modalCtrl: ModalController,
 
   ) {
-
+    this.rangoDeFechas.hasta = moment().format('DD/MM/YYYY')
+    this.rangoDeFechas.desde = moment().subtract(1, 'months').format('DD/MM/YYYY');
+    this.filtro.desde = moment().subtract(1, 'months').format();
+    this.filtro.hasta = moment().format();
   }
 
   ionViewDidLoad() {
     this.getAsistencias();
+    console.log("fechas", this.rangoDeFechas);
   }
 
   getAsistencias() {
@@ -54,6 +62,13 @@ export class AsistenciasPage {
     console.log(marcacion);
     let modal = this.modalCtrl.create(ModalAsistenciaDetailPage, { marcacion: marcacion });
     modal.present();
+  }
+
+  filtrar(){
+    console.log("filtrando");
+    this.rangoDeFechas.desde = moment(this.filtro.desde).format('DD/MM/YYYY');
+    this.rangoDeFechas.hasta = moment(this.filtro.hasta).format('DD/MM/YYYY');
+    this.getAsistencias();
   }
 
 }

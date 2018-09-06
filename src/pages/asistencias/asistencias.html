@@ -18,6 +18,23 @@
 
 <ion-content padding>
   <ion-card *ngIf="asistencias">
+    <ion-list>
+      <ion-item>
+        <ion-label>Fecha desde</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="filtro.desde"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha hasta</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="filtro.hasta"></ion-datetime>
+      </ion-item>
+      <ion-item>
+          <button ion-button block round (click)="filtrar()">Filtrar</button>
+      </ion-item>
+    </ion-list>
+    
+  </ion-card>
+
+  <ion-card *ngIf="asistencias" padding>
     <ion-card-header>
       <b>Resumen</b>
     </ion-card-header>
@@ -38,22 +55,26 @@
         <p item-start>Retrasos</p>
         <p item-end>{{asistencias.cantRetrasos}}</p>
       </ion-item>
+      <ion-item>
+          <p item-start>Horas Trabajadas</p>
+          <p item-end>{{asistencias.cantHorasTrabajadas}}</p>
+        </ion-item>
     </ion-list>
   </ion-card>
 
   <ion-list *ngIf="asistencias">
-    <ion-list-header>
-      Marcaciones del periodo
+    <ion-list-header text-wrap>
+      Marcaciones del periodo {{rangoDeFechas.desde}} a {{rangoDeFechas.hasta}}
     </ion-list-header>
 
     <a ion-item *ngFor="let marcacion of asistencias.asisTrabajadorList" (click)="openModal(marcacion)">
       <h3>{{marcacion.diaSemanaStr}} {{marcacion.fecha}}</h3>
       <p *ngIf="!marcacion.feriado && !marcacion.ausente">Entrada {{marcacion.horaEntrada}}, Salida {{marcacion.horaSalida}}</p>
-      <ion-badge color="red" *ngIf="marcacion.ausente">Ausente</ion-badge>
-      <ion-badge color="red" *ngIf="marcacion.omision">Omision</ion-badge>
-      <ion-badge color="red" *ngIf="marcacion.retraso">Retraso</ion-badge>
-      <ion-badge color="red" *ngIf="marcacion.salanticipada">Salida anticipada</ion-badge>
-      <ion-badge color="red" *ngIf="marcacion.feriado">Feriado</ion-badge>
+      <ion-badge color="danger" *ngIf="marcacion.ausente">Ausente</ion-badge>
+      <ion-badge color="danger" *ngIf="marcacion.omision">Omision</ion-badge>
+      <ion-badge color="danger" *ngIf="marcacion.retraso">Retraso</ion-badge>
+      <ion-badge color="danger" *ngIf="marcacion.salanticipada">Salida anticipada</ion-badge>
+      <ion-badge color="danger" *ngIf="marcacion.feriado">Feriado</ion-badge>
     </a>
   </ion-list>
 
