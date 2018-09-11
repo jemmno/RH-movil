@@ -25,6 +25,7 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { PerfilService } from '../app/services/perfil.service';
 import { SalarioPage } from '../pages/salario/salario';
 import { SalarioService } from '../app/services/salario.service';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SalarioService } from '../app/services/salario.service';
     AsistenciasPage,
     ModalAsistenciaDetailPage,
     PerfilPage,
-    SalarioPage
+    SalarioPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { SalarioService } from '../app/services/salario.service';
     AsistenciasPage,
     ModalAsistenciaDetailPage,
     PerfilPage,
-    SalarioPage
+    SalarioPage,
+    TabsPage
   ],
   providers: [
     Global,

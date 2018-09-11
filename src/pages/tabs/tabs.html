@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar color="positive">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>RH móvil</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+      <ion-tabs tabsPlacement="bottom" class="tabs-basic" [selectedIndex]="0">
+        <ion-tab tabTitle="Asistencia" tabIcon="calendar" [root]="asistencias"></ion-tab>
+        <ion-tab tabTitle="Salario" tabIcon="cash" [root]="salario"></ion-tab>
+        <ion-tab tabTitle="Perfil" tabIcon="contact" [root]="perfil"></ion-tab>
+      </ion-tabs>
+  </ion-content>
+  

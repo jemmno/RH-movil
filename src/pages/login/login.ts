@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, Loading, AlertController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { WellcomePage } from '../wellcome/wellcome';
+import { TabsPage } from '../tabs/tabs';
 import { LoadingService } from '../../app/services/loading.service';
 import { Session } from '../../app/models/session';
 import { StorageProvider } from '../../providers/storage/storage';
@@ -39,7 +39,7 @@ export class LoginPage {
         if (this.session) {
           this.storage.saveStateUser(this.session.user, this.registerCredentials);
           this.loader.hideLoader();        
-          this.nav.setRoot(WellcomePage);
+          this.nav.setRoot(TabsPage);
           this.events.publish('user:logged', this.session.user, Date.now());
         } else {
           this.loader.hideLoader();
@@ -67,7 +67,7 @@ export class LoginPage {
       console.log("logueado ???", this.auth.isLogged());
 
       if (this.auth.isLogged() ) {
-        this.nav.setRoot(WellcomePage);
+        this.nav.setRoot(TabsPage);
       }
     }
 }
