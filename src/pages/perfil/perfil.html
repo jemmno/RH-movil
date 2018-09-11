@@ -1,4 +1,83 @@
+<ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="segmento">
+        <ion-segment-button value="personal">
+            Datos Personales
+        </ion-segment-button>
+        <ion-segment-button value="laboral">
+            Laborales
+        </ion-segment-button>
+        <ion-segment-button value="horarios">
+            Horarios
+        </ion-segment-button>
+    </ion-segment>
+</ion-toolbar>
 
-<ion-content padding>
-    {{perfil | json}}
+<ion-content>
+    <div *ngIf="perfil" class="tabs">
+        <div [ngSwitch]="segmento">
+            <ion-list *ngSwitchCase="'personal'">
+                <ion-item>
+                    <p>Nombres</p>
+                    <p item-end>{{perfil.nombres}}</p>
+                </ion-item>
+                <ion-item>
+                    <p>Apellidos</p>
+                    <p item-end>{{perfil.apellidos}}</p>
+                </ion-item>
+                <ion-item>
+                    <p>Ciudad</p>
+                    <p item-end>{{perfil.ciudad}}</p>
+                </ion-item>
+                <ion-item>
+                    <p>Dirección</p>
+                    <p item-end>{{perfil.direccion}}</p>
+                </ion-item>
+                <ion-item>
+                    <p>Celular</p>
+                    <p item-end>{{perfil.celular}}</p>
+                </ion-item>
+                <ion-item>
+                    <p>Fecha de nacimiento</p>
+                    <p item-end>{{perfil.fechaNac}}</p>
+                </ion-item>
+            </ion-list>
+
+            <ion-list *ngSwitchCase="'laboral'">
+                <ion-item>
+                    <p>Fecha de ingreso</p>
+                    <p item-end>{{perfil.fechaIngreso}}</p>
+                </ion-item>
+                <ion-item>
+                    <p>Antiguedad</p>
+                    <p item-end>{{perfil.antiguedad}}</p>
+                </ion-item>
+                <ion-item>
+                    <p>Cargo</p>
+                    <p item-end>{{perfil.cargo}}</p>
+                </ion-item>
+                <ion-item>
+                    <p>Profesión</p>
+                    <p item-end>{{perfil.profesion}}</p>
+                </ion-item>
+                <ion-item>
+                    <p>Fecha de nacimietno</p>
+                    <p item-end>{{perfil.fechaNac}}</p>
+                </ion-item>
+                <ion-item>
+                    <p>Fecha de nacimietno</p>
+                    <p item-end>{{perfil.fechaNac}}</p>
+                </ion-item>
+            </ion-list>
+
+            <ion-list *ngSwitchCase="'horarios'">
+                <ion-list>
+                    <ion-item *ngFor="let horario of perfil.horariosFijos">
+                        <p>{{horario.dia}}</p>
+                        <p>Entrada: {{horario.horaEntrada}}</p>
+                        <p>Salida: {{horario.horaSalida}}</p>
+                    </ion-item>
+                </ion-list>
+            </ion-list>
+        </div>
+    </div>
 </ion-content>

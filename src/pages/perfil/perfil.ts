@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { PerfilService } from '../../app/services/perfil.service';
 import { Perfil } from '../../app/models/perfil';
 import { LoadingService } from '../../app/services/loading.service';
@@ -18,9 +18,12 @@ import { LoadingService } from '../../app/services/loading.service';
 })
 export class PerfilPage {
   perfil: Perfil;
-  
+  segmento: string = "personal";
+  isAndroid: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private perfilService: PerfilService, private loader: LoadingService) {
+    private perfilService: PerfilService, private loader: LoadingService, platform: Platform) {
+      this.isAndroid = platform.is('android');
   }
 
   ionViewDidLoad() {
