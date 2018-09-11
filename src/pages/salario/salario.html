@@ -16,17 +16,32 @@
 </ion-header>
 
 
-<ion-content padding *ngIf="periodos">
-    <ion-card padding> 
+<ion-content>
+    <ion-card class="periodosCard" *ngIf="periodos"> 
       <ion-card-header>Escoja Periodo</ion-card-header>
-      <ion-list padding inset>
+      <ion-list padding>
           <button ion-item *ngFor="let periodo of periodos" (click)="periodoSelected(periodo)">
               <h3>  {{periodo.mes}} - {{periodo.anho}} </h3>
               <p>{{periodo.fechaDesde}} a {{periodo.fechaHasta}}</p>
-            
+              <ion-icon item-end name="ios-arrow-forward"></ion-icon>
           </button>
         </ion-list>
     </ion-card>
+
+    <ion-card *ngIf="salarios"> 
+        <ion-list padding>
+            <ion-item *ngFor="let salario of salarios" (click)="salarioSelected(salario)">
+                <h3>  {{salario.tiposueldo}} </h3>
+                <ion-item>
+                  <p>Crédito</p> <p item-end>{{salario.credito | currency: 'PYG' : 'symbol' : '1.0'}} </p>
+                </ion-item>
+                <ion-item>
+                  <p>Débito</p> <p item-end>{{salario.debito  | currency: 'PYG' : 'symbol' : '1.0'}} </p>
+                </ion-item>
+              
+            </ion-item>
+          </ion-list>
+      </ion-card>
     
 
 
