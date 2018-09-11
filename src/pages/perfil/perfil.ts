@@ -17,7 +17,8 @@ import { LoadingService } from '../../app/services/loading.service';
   templateUrl: 'perfil.html',
 })
 export class PerfilPage {
-
+  perfil: Perfil;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private perfilService: PerfilService, private loader: LoadingService) {
   }

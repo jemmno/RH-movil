@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, Events } from 'ionic-angular';
-import {
-  FormGroup,
-  FormControl
-
-} from '@angular/forms';
 
 /**
  * Generated class for the ModalAsistenciaDetailPage page.

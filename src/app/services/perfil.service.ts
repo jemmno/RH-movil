@@ -5,7 +5,6 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/map';
 import { ToastService } from './toast.service';
-import { StorageProvider } from '../../providers/storage/storage'
 import { Global } from '../global';
 import { Perfil } from '../models/perfil';
 
@@ -16,7 +15,6 @@ export class PerfilService {
 
     constructor(
         private toastService: ToastService,
-        private storage: StorageProvider,
         private http: HttpClient
     ) {
         this.url = Global.url;

@@ -1,38 +1,37 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/map';
 import { ToastService } from './toast.service';
+import { StorageProvider } from '../../providers/storage/storage'
 import { Global } from '../global';
-import { Asistencia } from '../models/asistencia';
+import { Periodo } from '../models/periodo';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
-export class AsistenciaService{
-    private asistenciasUrl = 'mi-sesion/asistencias';  // URL to web api
+export class SalarioService {
+    private periodosUrl = 'mi-sesion/periodosrh';  // URL to web api
     public url: string;
-    
+
     constructor(
         private toastService: ToastService,
+        private storage: StorageProvider,
         private http: HttpClient
-    ){
+    ) {
         this.url = Global.url;
-     }
- 
-    
-    getAsistencias(rangoDeFechas): Observable<Asistencia>{
-        if (rangoDeFechas.desde === null || rangoDeFechas.hasta === null) {
-            return Observable.throw("Por favor ingrese sus credenciales");
-        } else {
-            return this.http.get<Asistencia>(`${this.url}${this.asistenciasUrl}?fechaDesde=${rangoDeFechas.desde}&fechaHasta=${rangoDeFechas.hasta}`)
-            .pipe(
-                catchError(this.handleError<Asistencia>('getAsitencias')) 
-            );
-        }
-    } 
+    }
 
-  /**
+
+    getPeriodos(): Observable<Periodo[]>{
+        return this.http.get<Periodo[]>(`${this.url}${this.periodosUrl}`)
+            .pipe(
+                catchError(this.handleError<Periodo[]>('getPeriodos')) 
+            );
+
+    }
+
+
+   /**
    * Handle Http operation that failed.
    * Let the app continue.
    * @param operation - name of the operation that failed
@@ -42,7 +41,7 @@ export class AsistenciaService{
     return (error: any): Observable<T> => {
  
       // TODO: send the error to remote logging infrastructure
-      console.error("obteniendo asistencias", error); // log to console instead
+      console.error("en el servicio obtener salarios", error); // log to console instead
  
       // TODO: better job of transforming error for user consumption
       if (error.error) {
@@ -58,6 +57,6 @@ export class AsistenciaService{
 
     /** Log a Service message with the MessageService */
     private log(message: string) {
-        this.toastService.create(`Error al obtener asistencias , ${message}`);
+        this.toastService.create(`Error al obtener estado de cuentas, ${message}`);
     }
 }

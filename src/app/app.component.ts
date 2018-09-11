@@ -11,6 +11,7 @@ import { Events } from 'ionic-angular';
 
 import { AsistenciasPage } from '../pages/asistencias/asistencias';
 import { PerfilPage } from '../pages/perfil/perfil';
+import { SalarioPage } from '../pages/salario/salario';
 
 @Component({
   templateUrl: 'app.html'
@@ -33,6 +34,7 @@ export class MyApp {
 
     this.pages = [
       { title: 'Asistencias', component: AsistenciasPage, icon: 'md-albums', subitem: false },
+      { title: 'Salario', component: SalarioPage, icon: 'md-cash', subitem: false },
       { title: 'Mi perfil', component: PerfilPage, icon: 'md-contact', subitem: false },
     ];
     this.activePage = this.pages[2];

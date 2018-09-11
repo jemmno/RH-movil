@@ -23,6 +23,8 @@ import { ModalAsistenciaDetailPage } from '../pages/modal-asistencia-detail/moda
 import { AsistenciaService } from '../app/services/asistencia.service';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { PerfilService } from '../app/services/perfil.service';
+import { SalarioPage } from '../pages/salario/salario';
+import { SalarioService } from '../app/services/salario.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { PerfilService } from '../app/services/perfil.service';
     WellcomePage,
     AsistenciasPage,
     ModalAsistenciaDetailPage,
-    PerfilPage
+    PerfilPage,
+    SalarioPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { PerfilService } from '../app/services/perfil.service';
     WellcomePage,
     AsistenciasPage,
     ModalAsistenciaDetailPage,
-    PerfilPage
+    PerfilPage,
+    SalarioPage
   ],
   providers: [
     Global,
@@ -56,6 +60,7 @@ import { PerfilService } from '../app/services/perfil.service';
     SplashScreen,
     AsistenciaService,
     PerfilService,
+    SalarioService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StorageProvider,
     { provide: HTTP_INTERCEPTORS,

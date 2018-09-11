@@ -1,0 +1,34 @@
+<!--
+  Generated template for the AsistenciasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Salario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="periodos">
+    <ion-card padding> 
+      <ion-card-header>Escoja Periodo</ion-card-header>
+      <ion-list padding inset>
+          <button ion-item *ngFor="let periodo of periodos" (click)="periodoSelected(periodo)">
+              <h3>  {{periodo.mes}} - {{periodo.anho}} </h3>
+              <p>{{periodo.fechaDesde}} a {{periodo.fechaHasta}}</p>
+            
+          </button>
+        </ion-list>
+    </ion-card>
+    
+
+
+
+</ion-content>

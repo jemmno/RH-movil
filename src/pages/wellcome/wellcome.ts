@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
-import { StorageProvider } from '../../providers/storage/storage';
 
 /**
  * Generated class for the WellcomePage page.
@@ -19,7 +18,6 @@ export class WellcomePage {
   public carreraList;
 
 
-  constructor(private storage: StorageProvider) {
-
+  constructor() {
   }  
 }
