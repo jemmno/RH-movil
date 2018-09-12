@@ -32,12 +32,12 @@ export class MyApp {
   ) {
     this.initializeApp();
 
-    this.pages = [
-      { title: 'Asistencias', component: AsistenciasPage, icon: 'md-albums', subitem: false },
-      { title: 'Salario', component: SalarioPage, icon: 'md-cash', subitem: false },
-      { title: 'Mi perfil', component: PerfilPage, icon: 'md-contact', subitem: false },
-    ];
-    this.activePage = this.pages[2];
+    // this.pages = [
+    //   { title: 'Asistencias', component: AsistenciasPage, icon: 'md-albums', subitem: false },
+    //   { title: 'Salario', component: SalarioPage, icon: 'md-cash', subitem: false },
+    //   { title: 'Mi perfil', component: PerfilPage, icon: 'md-contact', subitem: false },
+    // ];
+    // this.activePage = this.pages[2];
 
     events.subscribe('user:logged', (user, time) => {
       this.incialiarzarMenu();

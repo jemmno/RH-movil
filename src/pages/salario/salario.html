@@ -1,6 +1,6 @@
 <ion-content>
   <ion-card class="periodosCard" *ngIf="periodos">
-    <ion-card-header>Escoja Periodo</ion-card-header>
+    <ion-card-header>Escoja Período</ion-card-header>
     <ion-list padding>
       <button ion-item *ngFor="let periodo of periodos" (click)="periodoSelected(periodo)">
         <h3> {{periodo.mes}} - {{periodo.anho}} </h3>
@@ -25,5 +25,9 @@
 
       </ion-item>
     </ion-list>
+    <ion-item *ngIf="!salarios.length">
+        <p text-wrap>Sin registros de salario en el período escogido</p>
+      </ion-item>
   </ion-card>
+  
 </ion-content>

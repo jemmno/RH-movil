@@ -19,8 +19,8 @@ import * as moment from 'moment';
   templateUrl: 'asistencias.html',
 })
 export class AsistenciasPage {
-  filtro = { desde: '', hasta: ''};
-  
+  filtro = { desde: '', hasta: '' };
+  shownGroup = null;
   asistencias: Asistencia;
   //rangoDeFechas = { desde: '15/07/2018', hasta: '16/08/2018' };
   rangoDeFechas = { desde: '', hasta: '' };
@@ -49,7 +49,7 @@ export class AsistenciasPage {
       .subscribe(
         res => {
           this.asistencias = res,
-          this.loader.hideLoader();
+            this.loader.hideLoader();
         },
         error => {
           console.log("error en el controlador", error);
@@ -58,17 +58,28 @@ export class AsistenciasPage {
       );
   }
 
-  openModal(marcacion){
+  openModal(marcacion) {
     console.log(marcacion);
     let modal = this.modalCtrl.create(ModalAsistenciaDetailPage, { marcacion: marcacion });
     modal.present();
   }
 
-  filtrar(){
+  filtrar() {
     console.log("filtrando");
     this.rangoDeFechas.desde = moment(this.filtro.desde).format('DD/MM/YYYY');
     this.rangoDeFechas.hasta = moment(this.filtro.hasta).format('DD/MM/YYYY');
     this.getAsistencias();
   }
+
+  toggleGroup(group) {
+    if (this.isGroupShown(group)) {
+      this.shownGroup = null;
+    } else {
+      this.shownGroup = group;
+    }
+  };
+  isGroupShown(group) {
+    return this.shownGroup === group;
+  };
 
 }

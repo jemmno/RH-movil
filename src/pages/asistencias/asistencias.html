@@ -1,5 +1,34 @@
 
 <ion-content padding>
+    <ion-card *ngIf="asistencias" padding (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+        <ion-card-header>
+          <b>Resumen</b>
+          <ion-icon color="success" style="float: right;" [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+        </ion-card-header>
+        <ion-list *ngIf="isGroupShown(i)">
+          <ion-item>
+            <p item-start>Asistencias</p>
+            <p item-end>{{asistencias.cantAsistencias}}</p>
+          </ion-item>
+          <ion-item>
+            <p item-start>Ausencias</p>
+            <p item-end>{{asistencias.cantAusencias}}</p>
+          </ion-item>
+          <ion-item>
+            <p item-start>Omisiones</p>
+            <p item-end>{{asistencias.cantOmisiones}}</p>
+          </ion-item>
+          <ion-item>
+            <p item-start>Retrasos</p>
+            <p item-end>{{asistencias.cantRetrasos}}</p>
+          </ion-item>
+          <ion-item>
+            <p item-start>Horas Trabajadas</p>
+            <p item-end>{{asistencias.cantHorasTrabajadas}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+      
   <ion-card *ngIf="asistencias">
     <ion-list>
       <ion-item>
@@ -15,34 +44,6 @@
       </ion-item>
     </ion-list>
 
-  </ion-card>
-
-  <ion-card *ngIf="asistencias" padding>
-    <ion-card-header>
-      <b>Resumen</b>
-    </ion-card-header>
-    <ion-list>
-      <ion-item>
-        <p item-start>Asistencias</p>
-        <p item-end>{{asistencias.cantAsistencias}}</p>
-      </ion-item>
-      <ion-item>
-        <p item-start>Ausencias</p>
-        <p item-end>{{asistencias.cantAusencias}}</p>
-      </ion-item>
-      <ion-item>
-        <p item-start>Omisiones</p>
-        <p item-end>{{asistencias.cantOmisiones}}</p>
-      </ion-item>
-      <ion-item>
-        <p item-start>Retrasos</p>
-        <p item-end>{{asistencias.cantRetrasos}}</p>
-      </ion-item>
-      <ion-item>
-        <p item-start>Horas Trabajadas</p>
-        <p item-end>{{asistencias.cantHorasTrabajadas}}</p>
-      </ion-item>
-    </ion-list>
   </ion-card>
 
 
