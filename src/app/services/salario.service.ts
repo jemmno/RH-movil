@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
 import { ToastService } from './toast.service';
-import { StorageProvider } from '../../providers/storage/storage'
 import { Global } from '../global';
 import { Periodo } from '../models/periodo';
 import { Salario } from '../models/salario';
@@ -17,7 +16,6 @@ export class SalarioService {
 
     constructor(
         private toastService: ToastService,
-        private storage: StorageProvider,
         private http: HttpClient
     ) {
         this.url = Global.url;
