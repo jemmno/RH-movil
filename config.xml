@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="py.com.owl.rh" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>RH móvil</name>
+    <name>PRE-MEDIC</name>
     <description>Aplicación para consulta de Horarios, Turnos y Remuneraciones.</description>
     <author email="nogueraruiz@gmail.com" href="http://www.purecode.co/">José Emmanuel Noguera</author>
     <content src="index.html" />

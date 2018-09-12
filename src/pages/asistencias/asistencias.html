@@ -61,7 +61,7 @@
       Marcaciones del periodo {{rangoDeFechas.desde}} a {{rangoDeFechas.hasta}}
     </ion-list-header>
 
-    <a ion-item *ngFor="let marcacion of asistencias.asisTrabajadorList" (click)="openModal(marcacion)">
+    <a ion-item *ngFor="let marcacion of asistencias.asisTrabajadorList" (click)="openModal(marcacion)" class="item">
       <h3>{{marcacion.diaSemanaStr}} {{marcacion.fecha}}</h3>
       <p *ngIf="!marcacion.feriado && !marcacion.ausente">Entrada {{marcacion.horaEntrada}}, Salida {{marcacion.horaSalida}}</p>
       <ion-badge color="danger" *ngIf="marcacion.ausente">Ausente</ion-badge>
