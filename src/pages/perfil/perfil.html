@@ -68,9 +68,7 @@
             <ion-list *ngSwitchCase="'horarios'">
                 <ion-list>
                     <ion-item *ngFor="let horario of perfil.horariosFijos">
-                        <p>{{horario.dia}}</p>
-                        <p>Entrada: {{horario.horaEntrada}}</p>
-                        <p>Salida: {{horario.horaSalida}}</p>
+                        <p>{{horario.dia}}, {{horario.horaEntrada}} a  {{horario.horaSalida}}</p>
                     </ion-item>
                 </ion-list>
             </ion-list>

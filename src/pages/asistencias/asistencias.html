@@ -62,7 +62,7 @@
     </ion-list-header>
 
     <a ion-item *ngFor="let marcacion of asistencias.asisTrabajadorList" (click)="openModal(marcacion)" class="item">
-      <h3>{{marcacion.diaSemanaStr}} {{marcacion.fecha}}</h3>
+      <h3 class="margin">{{marcacion.diaSemanaStr}} {{marcacion.fecha}}</h3>
       <p *ngIf="!marcacion.feriado && !marcacion.ausente">Entrada {{marcacion.horaEntrada}}, Salida {{marcacion.horaSalida}}</p>
       <ion-badge color="danger" *ngIf="marcacion.ausente">Ausente</ion-badge>
       <ion-badge color="danger" *ngIf="marcacion.omision">Omision</ion-badge>
