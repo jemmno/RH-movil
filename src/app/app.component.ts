@@ -9,9 +9,9 @@ import { LoginPage } from '../pages/login/login';
 import { StorageProvider } from '../providers/storage/storage';
 import { Events } from 'ionic-angular';
 
-import { AsistenciasPage } from '../pages/asistencias/asistencias';
-import { PerfilPage } from '../pages/perfil/perfil';
-import { SalarioPage } from '../pages/salario/salario';
+// import { AsistenciasPage } from '../pages/asistencias/asistencias';
+// import { PerfilPage } from '../pages/perfil/perfil';
+// import { SalarioPage } from '../pages/salario/salario';
 
 @Component({
   templateUrl: 'app.html'
