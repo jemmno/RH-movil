@@ -4,6 +4,8 @@ import { SalarioService } from '../../app/services/salario.service';
 import { LoadingService } from '../../app/services/loading.service';
 import { Periodo } from '../../app/models/periodo';
 import { Salario } from '../../app/models/salario';
+import * as moment from 'moment';
+
 /**
  * Generated class for the SalarioPage page.
  *
@@ -60,9 +62,14 @@ export class SalarioPage {
       );
   }
 
-  periodoSelected(periodo){
+  periodoSelected($event){
+    let periodo = $event;
     console.log("periodo", periodo);
-    this.getSalario(periodo.id);
+    this.getSalario(periodo);
+  }
+
+  getMonthName(monthNumber){
+    return moment(monthNumber, 'M').locale('es').format('MMMM');
   }
 
 }

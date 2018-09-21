@@ -1,13 +1,11 @@
 <ion-content>
   <ion-card class="periodosCard" *ngIf="periodos">
     <ion-card-header>Escoja Período</ion-card-header>
-    <ion-list padding>
-      <button ion-item *ngFor="let periodo of periodos" (click)="periodoSelected(periodo)">
-        <h3 class="margin"> {{periodo.mes}} - {{periodo.anho}} </h3>
-        <p>{{periodo.fechaDesde}} a {{periodo.fechaHasta}}</p>
-        <ion-icon item-end name="ios-arrow-forward"></ion-icon>
-      </button>
-    </ion-list>
+    <ion-item>
+      <ion-select placeholder="Periodo" (ionChange)="periodoSelected($event)" >
+        <ion-option *ngFor="let periodo of periodos" [value]="periodo.id">{{getMonthName(periodo.mes)}} {{periodo.anho}}</ion-option>
+      </ion-select>
+    </ion-item>
   </ion-card>
 
   <ion-card *ngIf="salarios">
