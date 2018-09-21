@@ -1,31 +1,44 @@
 <ion-content>
   <ion-card class="periodosCard" *ngIf="periodos">
-    <ion-card-header>Escoja Período</ion-card-header>
     <ion-item>
-      <ion-select placeholder="Periodo" (ionChange)="periodoSelected($event)" >
-        <ion-option *ngFor="let periodo of periodos" [value]="periodo.id">{{getMonthName(periodo.mes)}} {{periodo.anho}}</ion-option>
+        <ion-label>Período</ion-label>
+
+      <ion-select (ionChange)="periodoSelected($event)">
+        <ion-option *ngFor="let periodo of periodos" [value]="periodo.id">{{getMonthName(periodo.mes)}}
+          {{periodo.anho}}</ion-option>
       </ion-select>
     </ion-item>
   </ion-card>
 
   <ion-card *ngIf="salarios">
+    <button ion-button block>Sueldo Neto Gs. {{ totalNeto | number }}</button>
     <ion-list padding>
-      <ion-item *ngFor="let salario of salarios">
-        <h3 class="margin"> {{salario.tiposueldo}} </h3>
-        <ion-item>
-          <p>Crédito</p>
+      <ion-list-header>Haberes</ion-list-header>
+      <div *ngFor="let salario of salarios">
+        <ion-item *ngIf="salario.credito > 0">
+          <p> {{salario.tiposueldo}} </p>
           <p item-end>{{salario.credito | number}} </p>
         </ion-item>
-        <ion-item>
-          <p>Débito</p>
+      </div>
+      <ion-item>
+        <p style="font-weight: bold"> Total </p>
+        <p item-end>{{totalCredito | number}} </p>
+      </ion-item>
+      <ion-list-header>Descuentos</ion-list-header>
+      <div *ngFor="let salario of salarios">
+        <ion-item *ngIf="salario.debito > 0">
+          <p> {{salario.tiposueldo}} </p>
           <p item-end>{{salario.debito | number}} </p>
         </ion-item>
-
+      </div>
+      <ion-item>
+        <p style="font-weight: bold"> Total </p>
+        <p item-end>{{totalCredito | number}} </p>
       </ion-item>
     </ion-list>
     <ion-item *ngIf="!salarios.length">
-        <p text-wrap>Sin registros de salario en el período escogido</p>
-      </ion-item>
+      <p text-wrap>Sin registros de salario en el período escogido</p>
+    </ion-item>
   </ion-card>
-  
+
 </ion-content>

@@ -21,7 +21,9 @@ import * as moment from 'moment';
 export class SalarioPage {
   periodos: Periodo[];
   salarios: Salario[];
-
+  totalNeto: number = 0;
+  totalCredito: number = 0;
+  totalDebito: number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private salarioService: SalarioService, public loader: LoadingService) {
   }
@@ -53,6 +55,13 @@ export class SalarioPage {
       .subscribe(
         res => {
           this.salarios = res,
+          this.totalCredito =   this.salarios.filter((item) =>item.credito)
+          .map((item) => +item.credito)
+          .reduce((sum, current) => sum + current, 0);
+          this.totalDebito=   this.salarios.filter((item) =>item.debito)
+          .map((item) => +item.debito)
+          .reduce((sum, current) => sum + current, 0);
+          this.totalNeto = this.totalCredito - this.totalDebito;
           this.loader.hideLoader();
         },
         error => {
